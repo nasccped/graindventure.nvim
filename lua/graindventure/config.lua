@@ -1,9 +1,12 @@
 --- This is the default config table.
 --- @type graindventure.ConfigTable
 local M = {
+  termgui = true,
   bolds = {},
-  italics = {},
-  transparents = {}
+  italics = { "comment" },
+  transparents = {},
+  paletteExtend = {},
+  groupsExtend = {},
 }
 
 
