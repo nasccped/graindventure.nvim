@@ -33,3 +33,9 @@
 --- @field cyan? string: ansi cyan color.
 --- @field white? string: ansi white color.
 --- @field [string]? string: any other color added color.
+
+--- @class graindventure.ModuleEntryPoint
+--- @field palette graindventure.ColorPalette
+--- @field config graindventure.ConfigTable
+--- @field load function
+--- @field setup function
