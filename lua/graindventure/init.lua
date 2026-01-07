@@ -1,10 +1,13 @@
 local table_utils = require("graindventure.utils.table")
 local palette = table_utils.deep_copy(require("graindventure.palette"))
 local config_table = table_utils.deep_copy(require("graindventure.config"))
-local groups = table_utils.deep_copy(require("graindventure.groups"))
+local groups = require("graindventure.groups")
+--- @type graindventure.ModuleEntryPoint
 local M = {
   palette = palette,
   config = config_table,
+  load = function() end,
+  setup = function() end
 }
 
 --- Function that apply the provided group/data.
@@ -16,7 +19,7 @@ end
 
 --- Loads the colorscheme into the Neovim app.
 M.load = function()
-  local new_palette, new_groups, ty
+  local new_palette, groups_data
   -- clone + extend palette
   new_palette = table_utils.deep_copy(M.palette)
   vim.tbl_deep_extend("force", new_palette, M.config.paletteExtend)
@@ -29,16 +32,15 @@ M.load = function()
   vim.g.colors_name = "graindventure"
   vim.o.termguicolors = M.config.termgui
   vim.o.background = "dark"
-  new_groups = table_utils.deep_copy(groups)
-  vim.tbl_deep_extend("force", new_groups, M.config.groupsExtend)
-  for name, value in pairs(new_groups) do
-    ty = type(value)
-    if ty == "string" then
+  groups_data = groups(M.palette, M.config)
+  vim.tbl_deep_extend("force", groups_data, M.config.groupsExtend)
+  for name, value in pairs(groups_data) do
+    if type(value) == "string" then
       apply_group(name, { link = value })
-    elseif ty == "table" then
+    elseif type(value) == "table" then
       apply_group(name, value)
     else
-      error("unexpected value type: " .. ty)
+      error("unexpected value type: " .. type(value))
     end
   end
 end
