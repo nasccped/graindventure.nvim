@@ -2,7 +2,7 @@
 --- @type graindventure.ConfigTable
 local M = {
   termgui = true,
-  bolds = {},
+  bolds = { "win_separator", "cursor_line_nr", "match_paren", "mode_msg" },
   italics = { "comment" },
   transparents = {},
   paletteExtend = {},
