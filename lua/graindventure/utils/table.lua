@@ -15,4 +15,35 @@ M.deep_copy = function(t)
   return new_table
 end
 
+--- Returns if both tables contains the same keys/values.
+--- @param t1 table
+--- @param t2 table
+--- @return boolean
+M.equals = function(t1, t2)
+  if #t1 ~= #t2 then
+    return false
+  end
+  for k, v in pairs(t1) do
+    if t2[k] ~= v then
+      return false
+    end
+  end
+  return true
+end
+
+--- Returns true if the provided table contains the value.
+--- @param t table
+--- @param value any
+--- @return boolean
+M.contains = function(t, value)
+  for _, v in pairs(t) do
+    if type(value) == "table" and M.equals(v, value) then
+      return true
+    elseif v == value then
+      return true
+    end
+  end
+  return false
+end
+
 return M
