@@ -11,7 +11,7 @@
 --- @class graindventure.ConfigGroups Holds all possible groups that a spec can be set.
 --- @field [integer] graindventure.GroupSet: The groups set.
 
---- @alias graindventure.GroupSet "conditional" | "class" | "comment" | "annotation" | "struct" | "function"
+--- @alias graindventure.GroupSet "conditional" | "class" | "comment" | "annotation" | "struct" | "function" | "win_separator" | "cursor_line_nr" | "match_paren" | "mode_msg" | "title"
 
 --- @class graindventure.Transparents
 --- @field [integer] graindventure.TransparentSet: Fields that are expected to be transparent.
