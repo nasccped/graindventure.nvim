@@ -56,6 +56,18 @@ local function blend_rgb(rgb1, rgb2, percentage)
   return clamp_rgb(rgb1)
 end
 
+--- Lighten a given hex color by a given percentage.
+--- @param color string
+--- @param percentage number
+--- @return graindventure.utils.RGBTable
+local function lighten_rgb(rgb, percentage)
+  local increase
+  for k, v in pairs(rgb) do
+    increase = (0xff - v) * percentage
+    rgb[k] = v + increase
+  end
+  return clamp_rgb(rgb)
+end
 
 --- Blends the color 1 with color 2 by a given percentage
 --- (float 0 -> 1).
@@ -65,6 +77,14 @@ end
 --- @return string
 M.blend = function(c1, c2, percentage)
   return into_hex(blend_rgb(into_rgb(c1), into_rgb(c2), percentage))
+end
+
+--- Lighten a given hex color by a given percentage.
+--- @param color string
+--- @param percentage number
+--- @return string
+M.lighten = function(color, percentage)
+  return into_hex(lighten_rgb(into_rgb(color), percentage))
 end
 
 return M
