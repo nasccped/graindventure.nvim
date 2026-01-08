@@ -3,7 +3,7 @@ local M = {
   -- defaults
   none = "NONE",
   foreground = "#dddede",
-  weakForeground = "##b1b5b5",
+  weakForeground = "#b1b5b5",
   background = "#040404",
   strongBackground = "#101010",
   -- ansis
