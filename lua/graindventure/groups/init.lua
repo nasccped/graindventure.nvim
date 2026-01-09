@@ -1,5 +1,6 @@
 local defaults = require("graindventure.groups.defaults")
-local funcs = { defaults }
+local syntax = require("graindventure.groups.syntax")
+local funcs = { defaults, syntax }
 
 --- Function that returns all the groups data based on a given color
 --- palette + config table.
