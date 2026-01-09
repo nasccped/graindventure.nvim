@@ -35,7 +35,7 @@ end
 --- @param t table
 --- @param value any
 --- @return boolean
-M.contains = function(t, value)
+M.contains_value = function(t, value)
   for _, v in pairs(t) do
     if type(value) == "table" and M.equals(v, value) then
       return true
@@ -44,6 +44,19 @@ M.contains = function(t, value)
     end
   end
   return false
+end
+
+--- Returns true if the provided table contains the key.
+--- @param t table
+--- @param key any
+--- @return boolean
+M.contains_key = function(t, key)
+  for k, _ in pairs(t) do
+    if k == key then
+      return true
+    end
+  end
+      return false
 end
 
 return M
