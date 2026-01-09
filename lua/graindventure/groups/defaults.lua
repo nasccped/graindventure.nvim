@@ -11,13 +11,13 @@ local M = function(palette, config)
 	local transparents = config.transparents or {}
 	local win_separator, cursor_line_nr, transparent_bg,
 	match_paren, mode_msg, transparent_float, title
-	win_separator = tables.contains(bolds, "win_separator")
-	cursor_line_nr = tables.contains(bolds, "cursor_line_nr")
-	transparent_bg = tables.contains(transparents, "bg")
-	transparent_float = tables.contains(transparents, "float")
-	match_paren = tables.contains(bolds, "match_paren")
-	mode_msg = tables.contains(bolds, "mode_msg")
-	title = tables.contains(bolds, "title")
+	win_separator = tables.contains_value(bolds, "win_separator")
+	cursor_line_nr = tables.contains_value(bolds, "cursor_line_nr")
+	transparent_bg = tables.contains_value(transparents, "bg")
+	transparent_float = tables.contains_value(transparents, "float")
+	match_paren = tables.contains_value(bolds, "match_paren")
+	mode_msg = tables.contains_value(bolds, "mode_msg")
+	title = tables.contains_value(bolds, "title")
 	return {
 		ColorColumn = { fg = palette.none, bg = palette.strongBackground },
 		Conceal = "Normal",
